@@ -5,7 +5,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -34,6 +33,11 @@ class UserListActivity : AppCompatActivity(){
             val intent = Intent(this, UserFormActivity::class.java)
             startActivity(intent)
         }
+
+        val userFormViewModel : PatientViewModel = ViewModelProvider(this).get(PatientViewModel::class.java)
+        userFormViewModel.getListPatients().observe(this, Observer<Any?> {
+
+        })
 
     }
 
