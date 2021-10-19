@@ -13,24 +13,33 @@ import android.view.View
 
 class UserFormActivity : AppCompatActivity() {
 
-    private val edtFirstName = findViewById<EditText>(R.id.edtFirstName)
-    private val edtLastName = findViewById<EditText>(R.id.edtLastName)
-    private val edtDNI = findViewById<EditText>(R.id.edtDNI)
-    private val edtAddress = findViewById<EditText>(R.id.edtAddress)
+    private lateinit var edtFirstName: EditText
+    private lateinit var edtLastName: EditText
+    private lateinit var edtDNI: EditText
+    private lateinit var edtAddress: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_form)
+        this.edtFirstName = findViewById(R.id.edtFirstName)
+        this.edtLastName = findViewById(R.id.edtLastName)
+        this.edtDNI = findViewById(R.id.edtDNI)
+        this.edtAddress = findViewById(R.id.edtAddress)
 
         val viewModel: PatientViewModel = ViewModelProvider(this).get(PatientViewModel::class.java)
 
         val btnSave = findViewById<Button>(R.id.btnSave)
 
-        btnSave.setOnClickListener(object : View.OnClickListener {
-            override fun onClick(v: View?) {
-                viewModel.savePatient(Patient(edtFirstName.text.toString(), edtLastName.text.toString(), edtDNI.text.toString(), edtAddress.text.toString()))
-            }
-        })
+        btnSave.setOnClickListener {
+            viewModel.savePatient(
+                Patient(
+                    edtFirstName.text.toString(),
+                    edtLastName.text.toString(),
+                    edtDNI.text.toString(),
+                    edtAddress.text.toString()
+                )
+            )
+        }
 
     }
 }

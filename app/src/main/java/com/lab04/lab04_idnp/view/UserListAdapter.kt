@@ -1,6 +1,5 @@
 package com.lab04.lab04_idnp.view
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,15 +8,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.lab04.lab04_idnp.R
 import com.lab04.lab04_idnp.model.Patient
 
-class UserListAdapter(private val listPatientData:ArrayList<Patient>):RecyclerView.Adapter<UserListAdapter.ViewHolder>() {
+class UserListAdapter(private val listPatientData: ArrayList<Patient?>) :
+    RecyclerView.Adapter<UserListAdapter.ViewHolder>() {
 
     private lateinit var mListener: onItemClickListener
 
-    interface onItemClickListener{
+    interface onItemClickListener {
         fun onItemClick(position: Int)
     }
 
-    fun setOnItemClickListener(listener:onItemClickListener){
+    fun setOnItemClickListener(listener: onItemClickListener) {
         mListener = listener
     }
 
@@ -27,25 +27,25 @@ class UserListAdapter(private val listPatientData:ArrayList<Patient>):RecyclerVi
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(listPatientData[position], position)
+        listPatientData[position]?.let { holder.bind(it, position) }
     }
 
     override fun getItemCount(): Int = listPatientData.size
 
-    class ViewHolder(view: View, listener: onItemClickListener):RecyclerView.ViewHolder(view){
+    class ViewHolder(view: View, listener: onItemClickListener) : RecyclerView.ViewHolder(view) {
 
-        private val txtFullName:TextView = itemView.findViewById(R.id.txtFullName)
-        private val txtDNI:TextView = itemView.findViewById(R.id.txtDNI)
-        private val txtAddress:TextView = itemView.findViewById(R.id.txtAddress)
+        private val txtFullName: TextView = itemView.findViewById(R.id.txtFullName)
+        private val txtDNI: TextView = itemView.findViewById(R.id.txtDNI)
+        private val txtAddress: TextView = itemView.findViewById(R.id.txtAddress)
 
-        init{
+        init {
             view.setOnClickListener {
                 listener.onItemClick(adapterPosition)
             }
         }
 
-        fun bind(item:Patient, position: Int){
-            txtFullName.text = item.name + " " +item.lastName
+        fun bind(item: Patient, position: Int) {
+            txtFullName.text = item.name + " " + item.lastName
             txtDNI.text = item.DNI
             txtAddress.text = item.address
         }
