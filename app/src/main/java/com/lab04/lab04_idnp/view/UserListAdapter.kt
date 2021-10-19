@@ -11,9 +11,19 @@ import com.lab04.lab04_idnp.model.Patient
 
 class UserListAdapter(private val listPatientData:ArrayList<Patient>):RecyclerView.Adapter<UserListAdapter.ViewHolder>() {
 
+    private lateinit var mListener: onItemClickListener
+
+    interface onItemClickListener{
+        fun onItemClick(position: Int)
+    }
+
+    fun setOnItemClickListener(listener:onItemClickListener){
+        mListener = listener
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.patient_row, parent, false)
-        return ViewHolder(view)
+        return ViewHolder(view, mListener)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -22,11 +32,17 @@ class UserListAdapter(private val listPatientData:ArrayList<Patient>):RecyclerVi
 
     override fun getItemCount(): Int = listPatientData.size
 
-    class ViewHolder(view: View):RecyclerView.ViewHolder(view){
+    class ViewHolder(view: View, listener: onItemClickListener):RecyclerView.ViewHolder(view){
 
         private val txtFullName:TextView = itemView.findViewById(R.id.txtFullName)
         private val txtDNI:TextView = itemView.findViewById(R.id.txtDNI)
         private val txtAddress:TextView = itemView.findViewById(R.id.txtAddress)
+
+        init{
+            view.setOnClickListener {
+                listener.onItemClick(adapterPosition)
+            }
+        }
 
         fun bind(item:Patient, position: Int){
             txtFullName.text = item.name + " " +item.lastName

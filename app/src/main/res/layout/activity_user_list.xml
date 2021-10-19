@@ -8,7 +8,7 @@
     tools:context=".view.UserListActivity">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recViewList"
+        android:id="@+id/recViewPatientList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="20dp"/>

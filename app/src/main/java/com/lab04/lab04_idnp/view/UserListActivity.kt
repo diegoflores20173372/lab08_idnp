@@ -1,9 +1,12 @@
 package com.lab04.lab04_idnp.view
 
+import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -24,18 +27,25 @@ class UserListActivity : AppCompatActivity(){
         setContentView(R.layout.activity_user_list)
 
         setupViewModel()
-        setupRecyclerView()
+        setupRecyclerView(this)
+
+        val floatBtnNewPatient: View = findViewById(R.id.actionBtnNewPatient)
+        floatBtnNewPatient.setOnClickListener {
+            val intent = Intent(this, UserFormActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 
-    private fun setupRecyclerView() {
-        newRV = findViewById(R.id.recViewList)
+    private fun setupRecyclerView(context: Context) {
+        newRV = findViewById(R.id.recViewPatientList)
         newRV.layoutManager = LinearLayoutManager(this)
         newRV.setHasFixedSize(true)
         listPatient = arrayListOf<Patient>()
-        getUserList()
+        getPatientList(context)
     }
 
-    private fun getUserList() {
+    private fun getPatientList(context: Context) {
         listPatient.add(Patient("Diego", "Flores", "73641789", "CalleTarapaca", ArrayList<Visit>()))
         listPatient.add(Patient("Diego2", "Flores3", "736417895", "CalleTarapaca7", ArrayList<Visit>()))
         listPatient.add(Patient("Diego2", "Flores4", "736417896", "CalleTarapaca8", ArrayList<Visit>()))
@@ -54,7 +64,16 @@ class UserListActivity : AppCompatActivity(){
         listPatient.add(Patient("Diego", "Flores", "73641789", "CalleTarapaca", ArrayList<Visit>()))
         listPatient.add(Patient("Diego2", "Flores3", "736417895", "CalleTarapaca7", ArrayList<Visit>()))
         listPatient.add(Patient("Diego2", "Flores4", "736417896", "CalleTarapaca8", ArrayList<Visit>()))
-        newRV.adapter = UserListAdapter(listPatient)
+
+        var adapter = UserListAdapter(listPatient)
+        newRV.adapter = adapter
+        adapter.setOnItemClickListener(object: UserListAdapter.onItemClickListener{
+            override fun onItemClick(position: Int) {
+                val sIntent = Intent(context, UserDataActivity::class.java)
+                startActivity(sIntent)
+            }
+
+        })
     }
 
     private fun setupViewModel(){
