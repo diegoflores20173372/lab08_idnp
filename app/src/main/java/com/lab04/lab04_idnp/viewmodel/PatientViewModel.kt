@@ -1,5 +1,6 @@
 package com.lab04.lab04_idnp.viewmodel
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.lab04.lab04_idnp.model.Patient
@@ -10,6 +11,10 @@ class PatientViewModel : ViewModel() {
     private val patientLiveData = MutableLiveData<Patient?>()
     fun listPatients() {
         patientsLiveData.value = PatientService.list()
+    }
+
+    fun getListPatients(): LiveData<ArrayList<Patient?>> {
+        return patientsLiveData
     }
 
     fun fetchPatient(id: Int) {
