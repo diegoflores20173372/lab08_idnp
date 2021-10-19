@@ -10,7 +10,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Lab04_IDNP">
         <activity
-            android:name=".MainActivity"
+            android:name=".view.VisitFormActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.UserFormActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.UserDataActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.UserListActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
