@@ -34,9 +34,4 @@ class PatientViewModel : ViewModel() {
     fun savePatient(patient: Patient) {
         patientLiveData.value = PatientService.findById(PatientService.save(patient))
     }
-
-    fun delete(patient: Patient) {
-        if (PatientService.delete(patient))
-            patientLiveData.value = null
-    }
 }

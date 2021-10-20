@@ -17,7 +17,6 @@ import com.lab04.lab04_idnp.viewmodel.PatientViewModel
 
 class UserListActivity : AppCompatActivity() {
 
-    private lateinit var viewModel: PatientViewModel
     private lateinit var newRV: RecyclerView
     private lateinit var listPatient: ArrayList<Patient?>
 
@@ -26,12 +25,6 @@ class UserListActivity : AppCompatActivity() {
         setContentView(R.layout.activity_user_list)
 
         setupRecyclerView()
-
-        val floatBtnNewPatient: View = findViewById(R.id.actionBtnNewPatient)
-        floatBtnNewPatient.setOnClickListener {
-            val intent = Intent(this, UserFormActivity::class.java)
-            startActivity(intent)
-        }
 
         val userFormViewModel: PatientViewModel =
             ViewModelProvider(this).get(PatientViewModel::class.java)
@@ -48,6 +41,12 @@ class UserListActivity : AppCompatActivity() {
                 }
             })
         })
+
+        val floatBtnNewPatient: View = findViewById(R.id.actionBtnNewPatient)
+        floatBtnNewPatient.setOnClickListener {
+            val intent = Intent(this, UserFormActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun setupRecyclerView() {

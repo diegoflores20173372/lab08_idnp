@@ -33,13 +33,4 @@ object PatientService {
                 this?.visits?.add(dataVisit)
             }
     }
-
-    fun delete(patient: Patient): Boolean {
-        return if (patients.indexOf(patient) != -1) {
-            patients[patients.indexOf(patient)] = null
-            true
-        } else {
-            false
-        }
-    }
 }
