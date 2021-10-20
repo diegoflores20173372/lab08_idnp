@@ -17,6 +17,10 @@ class PatientViewModel : ViewModel() {
         return patientsLiveData
     }
 
+    fun getCurrentPatient(): LiveData<Patient?> {
+        return patientLiveData
+    }
+
     fun fetchPatient(id: Int) {
         patientLiveData.value = PatientService.findById(id)
     }
