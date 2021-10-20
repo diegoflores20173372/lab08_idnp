@@ -11,13 +11,27 @@
         android:theme="@style/Theme.Lab04_IDNP">
         <activity
             android:name=".view.VisitFormActivity"
-            android:exported="false" />
+            android:exported="false">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".view.UserFormActivity" />
+        </activity>
+
         <activity
             android:name=".view.UserFormActivity"
-            android:exported="false" />
+            android:exported="false">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".view.UserListActivity" />
+        </activity>
+
         <activity
             android:name=".view.UserDataActivity"
-            android:exported="false" />
+            android:exported="false">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".view.UserListActivity" />
+        </activity>
         <activity
             android:name=".view.UserListActivity"
             android:exported="true">

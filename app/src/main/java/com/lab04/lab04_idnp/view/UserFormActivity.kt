@@ -1,5 +1,6 @@
 package com.lab04.lab04_idnp.view
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -8,8 +9,6 @@ import com.lab04.lab04_idnp.R
 import com.lab04.lab04_idnp.model.Patient
 import androidx.lifecycle.ViewModelProvider
 import com.lab04.lab04_idnp.viewmodel.PatientViewModel
-import android.view.View
-
 
 class UserFormActivity : AppCompatActivity() {
 
@@ -21,13 +20,13 @@ class UserFormActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_form)
+
         this.edtFirstName = findViewById(R.id.edtFirstName)
         this.edtLastName = findViewById(R.id.edtLastName)
         this.edtDNI = findViewById(R.id.edtDNI)
         this.edtAddress = findViewById(R.id.edtAddress)
 
         val viewModel: PatientViewModel = ViewModelProvider(this).get(PatientViewModel::class.java)
-
         val btnSave = findViewById<Button>(R.id.btnSave)
 
         btnSave.setOnClickListener {
@@ -39,6 +38,14 @@ class UserFormActivity : AppCompatActivity() {
                     edtAddress.text.toString()
                 )
             )
+            val intent = Intent(this, UserListActivity::class.java)
+            startActivity(intent)
+        }
+
+        var btnCancel = findViewById<Button>(R.id.btnCancel)
+        btnCancel.setOnClickListener {
+            val intent = Intent(this, UserListActivity::class.java)
+            startActivity(intent)
         }
 
     }

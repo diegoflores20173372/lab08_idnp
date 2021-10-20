@@ -1,5 +1,6 @@
 package com.lab04.lab04_idnp.view
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,10 +9,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.lab04.lab04_idnp.R
 import com.lab04.lab04_idnp.model.Patient
 
-class UserListAdapter(private val listPatientData: ArrayList<Patient?>) :
+class UserListAdapter(listPatientData: ArrayList<Patient?>) :
     RecyclerView.Adapter<UserListAdapter.ViewHolder>() {
 
     private lateinit var mListener: onItemClickListener
+    private var currentListPatientData: ArrayList<Patient> = listPatientData.filterNotNull() as ArrayList<Patient>
 
     interface onItemClickListener {
         fun onItemClick(position: Int)
@@ -27,10 +29,10 @@ class UserListAdapter(private val listPatientData: ArrayList<Patient?>) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        listPatientData[position]?.let { holder.bind(it, position) }
+        currentListPatientData[position].let { holder.bind(it, position) }
     }
 
-    override fun getItemCount(): Int = listPatientData.size
+    override fun getItemCount(): Int = currentListPatientData.size
 
     class ViewHolder(view: View, listener: onItemClickListener) : RecyclerView.ViewHolder(view) {
 

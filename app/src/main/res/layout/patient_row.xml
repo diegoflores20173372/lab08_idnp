@@ -51,7 +51,7 @@
                     android:paddingBottom="2dp"
                     android:fontFamily="sans-serif-light"
                     android:text=""
-                    android:textSize="20dp"
+                    android:textSize="15dp"
                     android:textColor="#00457d"
                     android:textStyle="bold" />
 
@@ -65,7 +65,7 @@
                     android:paddingBottom="2dp"
                     android:fontFamily="sans-serif-light"
                     android:text=""
-                    android:textSize="20dp"
+                    android:textSize="15dp"
                     android:textColor="#00457d"
                     android:textStyle="bold" />
 
@@ -79,7 +79,7 @@
                     android:paddingBottom="2dp"
                     android:fontFamily="sans-serif-light"
                     android:text=""
-                    android:textSize="20dp"
+                    android:textSize="15dp"
                     android:textColor="#00457d"
                     android:textStyle="bold" />
             </LinearLayout>

@@ -1,6 +1,7 @@
 package com.lab04.lab04_idnp.service
 
 import com.lab04.lab04_idnp.model.Patient
+import com.lab04.lab04_idnp.model.Visit
 
 // Service
 object PatientService {
@@ -24,16 +25,12 @@ object PatientService {
         return patients.lastIndex
     }
 
-    fun update(id: Int, patient: Patient): Patient? {
+    fun addVisit(id: Int, dataVisit: Visit): Patient? {
         return if (id >= patients.size)
             null
         else
             patients[id].apply {
-                this?.name = patient.name
-                this?.lastName = patient.lastName
-                this?.address = patient.address
-                this?.DNI = patient.DNI
-                this?.visits = patient.visits
+                this?.visits?.add(dataVisit)
             }
     }
 

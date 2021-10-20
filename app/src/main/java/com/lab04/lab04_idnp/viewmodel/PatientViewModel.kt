@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.lab04.lab04_idnp.model.Patient
+import com.lab04.lab04_idnp.model.Visit
 import com.lab04.lab04_idnp.service.PatientService
 
 class PatientViewModel : ViewModel() {
@@ -25,8 +26,8 @@ class PatientViewModel : ViewModel() {
         patientLiveData.value = PatientService.findById(id)
     }
 
-    fun updatePatient(id: Int, patient: Patient) {
-        PatientService.update(id, patient)
+    fun addVisitToPatient(id: Int, visitData: Visit) {
+        PatientService.addVisit(id, visitData)
         patientLiveData.value = PatientService.findById(id)
     }
 

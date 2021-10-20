@@ -28,6 +28,7 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="10dp"
                 android:layout_weight="1"
+                android:contentDescription="@string/idenImgViewVisitMedic"
                 app:srcCompat="@drawable/visita_medica" />
 
             <LinearLayout
@@ -51,7 +52,7 @@
                     android:paddingBottom="2dp"
                     android:fontFamily="sans-serif-light"
                     android:text=""
-                    android:textSize="20dp"
+                    android:textSize="15sp"
                     android:textColor="#00457d"
                     android:textStyle="bold" />
 
@@ -65,7 +66,7 @@
                     android:paddingBottom="2dp"
                     android:fontFamily="sans-serif-light"
                     android:text=""
-                    android:textSize="20dp"
+                    android:textSize="15sp"
                     android:textColor="#00457d"
                     android:textStyle="bold" />
 
@@ -79,7 +80,7 @@
                     android:paddingBottom="2dp"
                     android:fontFamily="sans-serif-light"
                     android:text=""
-                    android:textSize="20dp"
+                    android:textSize="15sp"
                     android:textColor="#00457d"
                     android:textStyle="bold" />
 
@@ -93,7 +94,7 @@
                     android:paddingBottom="2dp"
                     android:fontFamily="sans-serif-light"
                     android:text=""
-                    android:textSize="20dp"
+                    android:textSize="15sp"
                     android:textColor="#00457d"
                     android:textStyle="bold" />
             </LinearLayout>

@@ -25,8 +25,7 @@ class UserListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_list)
 
-        setupViewModel()
-        setupRecyclerView(this)
+        setupRecyclerView()
 
         val floatBtnNewPatient: View = findViewById(R.id.actionBtnNewPatient)
         floatBtnNewPatient.setOnClickListener {
@@ -36,162 +35,25 @@ class UserListActivity : AppCompatActivity() {
 
         val userFormViewModel: PatientViewModel =
             ViewModelProvider(this).get(PatientViewModel::class.java)
-
+        userFormViewModel.listPatients()
         userFormViewModel.getListPatients().observe(this, {
             newRV.adapter = UserListAdapter(it)
             (newRV.adapter as UserListAdapter).setOnItemClickListener(object :
                 UserListAdapter.onItemClickListener {
                 override fun onItemClick(position: Int) {
-                    val sIntent = Intent(this@UserListActivity, UserDataActivity::class.java)
+                    val sIntent = Intent(this@UserListActivity, UserDataActivity::class.java).apply {
+                        putExtra("currentPatient", position)
+                    }
                     startActivity(sIntent)
                 }
             })
         })
-
     }
 
-    private fun setupRecyclerView(context: Context) {
+    private fun setupRecyclerView() {
         newRV = findViewById(R.id.recViewPatientList)
         newRV.layoutManager = LinearLayoutManager(this)
         newRV.setHasFixedSize(true)
         listPatient = arrayListOf()
-        getPatientList(context)
-    }
-
-    private fun getPatientList(context: Context) {
-        listPatient.add(Patient("Diego", "Flores", "73641789", "CalleTarapaca", ArrayList<Visit>()))
-        listPatient.add(
-            Patient(
-                "Diego2",
-                "Flores3",
-                "736417895",
-                "CalleTarapaca7",
-                ArrayList<Visit>()
-            )
-        )
-        listPatient.add(
-            Patient(
-                "Diego2",
-                "Flores4",
-                "736417896",
-                "CalleTarapaca8",
-                ArrayList<Visit>()
-            )
-        )
-        listPatient.add(Patient("Diego", "Flores", "73641789", "CalleTarapaca", ArrayList<Visit>()))
-        listPatient.add(
-            Patient(
-                "Diego2",
-                "Flores3",
-                "736417895",
-                "CalleTarapaca7",
-                ArrayList<Visit>()
-            )
-        )
-        listPatient.add(
-            Patient(
-                "Diego2",
-                "Flores4",
-                "736417896",
-                "CalleTarapaca8",
-                ArrayList<Visit>()
-            )
-        )
-        listPatient.add(Patient("Diego", "Flores", "73641789", "CalleTarapaca", ArrayList<Visit>()))
-        listPatient.add(
-            Patient(
-                "Diego2",
-                "Flores3",
-                "736417895",
-                "CalleTarapaca7",
-                ArrayList<Visit>()
-            )
-        )
-        listPatient.add(
-            Patient(
-                "Diego2",
-                "Flores4",
-                "736417896",
-                "CalleTarapaca8",
-                ArrayList<Visit>()
-            )
-        )
-        listPatient.add(Patient("Diego", "Flores", "73641789", "CalleTarapaca", ArrayList<Visit>()))
-        listPatient.add(
-            Patient(
-                "Diego2",
-                "Flores3",
-                "736417895",
-                "CalleTarapaca7",
-                ArrayList<Visit>()
-            )
-        )
-        listPatient.add(
-            Patient(
-                "Diego2",
-                "Flores4",
-                "736417896",
-                "CalleTarapaca8",
-                ArrayList<Visit>()
-            )
-        )
-        listPatient.add(Patient("Diego", "Flores", "73641789", "CalleTarapaca", ArrayList<Visit>()))
-        listPatient.add(
-            Patient(
-                "Diego2",
-                "Flores3",
-                "736417895",
-                "CalleTarapaca7",
-                ArrayList<Visit>()
-            )
-        )
-        listPatient.add(
-            Patient(
-                "Diego2",
-                "Flores4",
-                "736417896",
-                "CalleTarapaca8",
-                ArrayList<Visit>()
-            )
-        )
-        listPatient.add(Patient("Diego", "Flores", "73641789", "CalleTarapaca", ArrayList<Visit>()))
-        listPatient.add(
-            Patient(
-                "Diego2",
-                "Flores3",
-                "736417895",
-                "CalleTarapaca7",
-                ArrayList<Visit>()
-            )
-        )
-        listPatient.add(
-            Patient(
-                "Diego2",
-                "Flores4",
-                "736417896",
-                "CalleTarapaca8",
-                ArrayList<Visit>()
-            )
-        )
-
-        val adapter = UserListAdapter(listPatient)
-        newRV.adapter = adapter
-        adapter.setOnItemClickListener(object : UserListAdapter.onItemClickListener {
-            override fun onItemClick(position: Int) {
-                val sIntent = Intent(context, UserDataActivity::class.java)
-                startActivity(sIntent)
-            }
-
-        })
-    }
-
-    private fun setupViewModel() {
-        viewModel = ViewModelProvider(this).get(PatientViewModel::class.java)
-
-        val listPatientObserver = Observer<ArrayList<Patient?>> {
-            Log.d("Pacientes", it.toString())
-        }
-
-        viewModel.getListPatients().observe(this, listPatientObserver)
     }
 }
