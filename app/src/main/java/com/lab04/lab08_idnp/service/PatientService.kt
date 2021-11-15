@@ -1,7 +1,7 @@
-package com.lab04.lab04_idnp.service
+package com.lab04.lab08_idnp.service
 
-import com.lab04.lab04_idnp.model.Patient
-import com.lab04.lab04_idnp.model.Visit
+import com.lab04.lab08_idnp.model.Patient
+import com.lab04.lab08_idnp.model.Visit
 
 // Service
 object PatientService {

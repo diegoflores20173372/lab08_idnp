@@ -1,11 +1,11 @@
-package com.lab04.lab04_idnp.viewmodel
+package com.lab04.lab08_idnp.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.lab04.lab04_idnp.model.Patient
-import com.lab04.lab04_idnp.model.Visit
-import com.lab04.lab04_idnp.service.PatientService
+import com.lab04.lab08_idnp.model.Patient
+import com.lab04.lab08_idnp.model.Visit
+import com.lab04.lab08_idnp.service.PatientService
 
 class PatientViewModel : ViewModel() {
     private val patientsLiveData = MutableLiveData<ArrayList<Patient?>>(arrayListOf())

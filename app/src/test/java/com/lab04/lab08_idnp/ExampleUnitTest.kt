@@ -1,4 +1,4 @@
-package com.lab04.lab04_idnp
+package com.lab04.lab08_idnp
 
 import org.junit.Test
 

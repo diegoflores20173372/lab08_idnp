@@ -1,4 +1,4 @@
-package com.lab04.lab04_idnp.model
+package com.lab04.lab08_idnp.model
 
 data class Patient(
     var name: String,

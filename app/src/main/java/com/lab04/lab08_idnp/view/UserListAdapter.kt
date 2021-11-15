@@ -1,13 +1,12 @@
-package com.lab04.lab04_idnp.view
+package com.lab04.lab08_idnp.view
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.lab04.lab04_idnp.R
-import com.lab04.lab04_idnp.model.Patient
+import com.lab04.lab08_idnp.R
+import com.lab04.lab08_idnp.model.Patient
 
 class UserListAdapter(listPatientData: ArrayList<Patient?>) :
     RecyclerView.Adapter<UserListAdapter.ViewHolder>() {

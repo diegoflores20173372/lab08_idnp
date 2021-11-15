@@ -1,12 +1,12 @@
-package com.lab04.lab04_idnp.view
+package com.lab04.lab08_idnp.view
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.lab04.lab04_idnp.R
-import com.lab04.lab04_idnp.model.Visit
+import com.lab04.lab08_idnp.R
+import com.lab04.lab08_idnp.model.Visit
 
 class VisitListAdapter(private val listVisitData:ArrayList<Visit>?): RecyclerView.Adapter<VisitListAdapter.ViewHolder>() {
 

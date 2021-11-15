@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.lab04.lab04_idnp">
+    package="com.lab04.lab08_idnp">
 
     <application
         android:allowBackup="true"
@@ -10,30 +10,30 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Lab04_IDNP">
         <activity
-            android:name=".view.VisitFormActivity"
+            android:name="com.lab04.lab08_idnp.view.VisitFormActivity"
             android:exported="false">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".view.UserFormActivity" />
+                android:value="com.lab04.lab08_idnp.view.UserFormActivity" />
         </activity>
 
         <activity
-            android:name=".view.UserFormActivity"
+            android:name="com.lab04.lab08_idnp.view.UserFormActivity"
             android:exported="false">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".view.UserListActivity" />
+                android:value="com.lab04.lab08_idnp.view.UserListActivity" />
         </activity>
 
         <activity
-            android:name=".view.UserDataActivity"
+            android:name="com.lab04.lab08_idnp.view.UserDataActivity"
             android:exported="false">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".view.UserListActivity" />
+                android:value="com.lab04.lab08_idnp.view.UserListActivity" />
         </activity>
         <activity
-            android:name=".view.UserListActivity"
+            android:name="com.lab04.lab08_idnp.view.UserListActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,15 +1,14 @@
-package com.lab04.lab04_idnp.view
+package com.lab04.lab08_idnp.view
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import androidx.lifecycle.ViewModelProvider
-import com.lab04.lab04_idnp.R
-import com.lab04.lab04_idnp.model.Visit
-import com.lab04.lab04_idnp.viewmodel.PatientViewModel
+import com.lab04.lab08_idnp.R
+import com.lab04.lab08_idnp.model.Visit
+import com.lab04.lab08_idnp.viewmodel.PatientViewModel
 
 class VisitFormActivity : AppCompatActivity() {
 
