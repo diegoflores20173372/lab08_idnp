@@ -1,36 +1,27 @@
 package com.lab04.lab08_idnp.service
 
-import com.lab04.lab08_idnp.model.Patient
-import com.lab04.lab08_idnp.model.Visit
+import com.lab04.lab08_idnp.model.User
 
 // Service
 object PatientService {
 
     // Repository
-    private var patients: ArrayList<Patient?> = arrayListOf()
+    private var users: ArrayList<User?> = arrayListOf()
 
-    fun list(): ArrayList<Patient?> {
-        return patients
+    fun list(): ArrayList<User?> {
+        return users
     }
 
-    fun findById(id: Int): Patient? {
-        return if (id >= patients.size)
+    fun findById(id: Int): User? {
+        return if (id >= users.size)
             null
         else
-            patients[id]
+            users[id]
     }
 
-    fun save(patient: Patient): Int {
-        patients.add(patient)
-        return patients.lastIndex
+    fun save(user: User): Int {
+        users.add(user)
+        return users.lastIndex
     }
 
-    fun addVisit(id: Int, dataVisit: Visit): Patient? {
-        return if (id >= patients.size)
-            null
-        else
-            patients[id].apply {
-                this?.visits?.add(dataVisit)
-            }
-    }
 }

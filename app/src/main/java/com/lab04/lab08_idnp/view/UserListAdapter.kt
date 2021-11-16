@@ -6,13 +6,13 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.lab04.lab08_idnp.R
-import com.lab04.lab08_idnp.model.Patient
+import com.lab04.lab08_idnp.model.User
 
-class UserListAdapter(listPatientData: ArrayList<Patient?>) :
+class UserListAdapter(listUserData: ArrayList<User?>) :
     RecyclerView.Adapter<UserListAdapter.ViewHolder>() {
 
     private lateinit var mListener: onItemClickListener
-    private var currentListPatientData: ArrayList<Patient> = listPatientData.filterNotNull() as ArrayList<Patient>
+    private var currentListUserData: ArrayList<User> = listUserData.filterNotNull() as ArrayList<User>
 
     interface onItemClickListener {
         fun onItemClick(position: Int)
@@ -28,10 +28,10 @@ class UserListAdapter(listPatientData: ArrayList<Patient?>) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        currentListPatientData[position].let { holder.bind(it, position) }
+        currentListUserData[position].let { holder.bind(it, position) }
     }
 
-    override fun getItemCount(): Int = currentListPatientData.size
+    override fun getItemCount(): Int = currentListUserData.size
 
     class ViewHolder(view: View, listener: onItemClickListener) : RecyclerView.ViewHolder(view) {
 
@@ -45,10 +45,8 @@ class UserListAdapter(listPatientData: ArrayList<Patient?>) :
             }
         }
 
-        fun bind(item: Patient, position: Int) {
-            txtFullName.text = item.name + " " + item.lastName
-            txtDNI.text = item.DNI
-            txtAddress.text = item.address
+        fun bind(item: User, position: Int) {
+
         }
     }
 }

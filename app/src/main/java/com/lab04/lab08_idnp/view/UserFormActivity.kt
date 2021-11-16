@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import com.lab04.lab08_idnp.R
-import com.lab04.lab08_idnp.model.Patient
+import com.lab04.lab08_idnp.model.User
 import androidx.lifecycle.ViewModelProvider
 import com.lab04.lab08_idnp.viewmodel.PatientViewModel
 
@@ -31,7 +31,7 @@ class UserFormActivity : AppCompatActivity() {
 
         btnSave.setOnClickListener {
             viewModel.savePatient(
-                Patient(
+                User(
                     edtFirstName.text.toString(),
                     edtLastName.text.toString(),
                     edtDNI.text.toString(),
