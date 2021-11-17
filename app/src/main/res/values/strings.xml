@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">Lab04_IDNP</string>
-    <string name="idenImgViewVisitMedic">Avatar de Visita Médica</string>
+    <string name="app_name">Lab08 IDNP</string>
+    <string name="idenImgViewVisitMedic">Recycler View User</string>
 </resources>

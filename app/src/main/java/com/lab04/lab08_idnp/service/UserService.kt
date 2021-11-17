@@ -3,7 +3,7 @@ package com.lab04.lab08_idnp.service
 import com.lab04.lab08_idnp.model.User
 
 // Service
-object PatientService {
+object UserService {
 
     // Repository
     private var users: ArrayList<User?> = arrayListOf()

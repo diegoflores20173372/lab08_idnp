@@ -8,34 +8,33 @@ import android.widget.EditText
 import com.lab04.lab08_idnp.R
 import com.lab04.lab08_idnp.model.User
 import androidx.lifecycle.ViewModelProvider
-import com.lab04.lab08_idnp.viewmodel.PatientViewModel
+import com.lab04.lab08_idnp.viewmodel.UserViewModel
 
 class UserFormActivity : AppCompatActivity() {
 
-    private lateinit var edtFirstName: EditText
-    private lateinit var edtLastName: EditText
-    private lateinit var edtDNI: EditText
-    private lateinit var edtAddress: EditText
+    private lateinit var edtFullName: EditText
+    private lateinit var edtPhone: EditText
+    private lateinit var edtEmail: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_form)
 
-        this.edtFirstName = findViewById(R.id.edtFirstName)
-        this.edtLastName = findViewById(R.id.edtLastName)
-        this.edtDNI = findViewById(R.id.edtDNI)
-        this.edtAddress = findViewById(R.id.edtAddress)
+        this.edtFullName = findViewById(R.id.edtFullName)
+        this.edtPhone = findViewById(R.id.edtPhone)
+        this.edtEmail = findViewById(R.id.edtEmail)
 
-        val viewModel: PatientViewModel = ViewModelProvider(this).get(PatientViewModel::class.java)
+        val viewModel: UserViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
         val btnSave = findViewById<Button>(R.id.btnSave)
 
         btnSave.setOnClickListener {
-            viewModel.savePatient(
+            viewModel.saveUser(
                 User(
-                    edtFirstName.text.toString(),
-                    edtLastName.text.toString(),
-                    edtDNI.text.toString(),
-                    edtAddress.text.toString()
+                    edtFullName.text.toString(),
+                    edtPhone.text.toString(),
+                    edtEmail.text.toString(),
+                    false,
+                    ""
                 )
             )
             val intent = Intent(this, UserListActivity::class.java)
