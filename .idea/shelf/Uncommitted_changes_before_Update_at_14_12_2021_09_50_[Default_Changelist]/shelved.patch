@@ -1,0 +1,79 @@
+Index: app/src/main/java/com/lab04/lab08_idnp/view/UserFormActivity.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.lab04.lab08_idnp.view\r\n\r\nimport android.content.Intent\r\nimport androidx.appcompat.app.AppCompatActivity\r\nimport android.os.Bundle\r\nimport android.widget.Button\r\nimport android.widget.EditText\r\nimport com.lab04.lab08_idnp.R\r\nimport com.lab04.lab08_idnp.model.User\r\nimport androidx.lifecycle.ViewModelProvider\r\nimport com.lab04.lab08_idnp.viewmodel.PatientViewModel\r\n\r\nclass UserFormActivity : AppCompatActivity() {\r\n\r\n    private lateinit var edtFirstName: EditText\r\n    private lateinit var edtLastName: EditText\r\n    private lateinit var edtDNI: EditText\r\n    private lateinit var edtAddress: EditText\r\n\r\n    override fun onCreate(savedInstanceState: Bundle?) {\r\n        super.onCreate(savedInstanceState)\r\n        setContentView(R.layout.activity_user_form)\r\n\r\n        this.edtFirstName = findViewById(R.id.edtFirstName)\r\n        this.edtLastName = findViewById(R.id.edtLastName)\r\n        this.edtDNI = findViewById(R.id.edtDNI)\r\n        this.edtAddress = findViewById(R.id.edtAddress)\r\n\r\n        val viewModel: PatientViewModel = ViewModelProvider(this).get(PatientViewModel::class.java)\r\n        val btnSave = findViewById<Button>(R.id.btnSave)\r\n\r\n        btnSave.setOnClickListener {\r\n            viewModel.savePatient(\r\n                User(\r\n                    edtFirstName.text.toString(),\r\n                    edtLastName.text.toString(),\r\n                    edtDNI.text.toString(),\r\n                    edtAddress.text.toString()\r\n                )\r\n            )\r\n            val intent = Intent(this, UserListActivity::class.java)\r\n            startActivity(intent)\r\n        }\r\n\r\n        var btnCancel = findViewById<Button>(R.id.btnCancel)\r\n        btnCancel.setOnClickListener {\r\n            val intent = Intent(this, UserListActivity::class.java)\r\n            startActivity(intent)\r\n        }\r\n\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/lab04/lab08_idnp/view/UserFormActivity.kt b/app/src/main/java/com/lab04/lab08_idnp/view/UserFormActivity.kt
+--- a/app/src/main/java/com/lab04/lab08_idnp/view/UserFormActivity.kt	(revision 37db748dda28eb2228b4443454cc7847d1f79fd7)
++++ b/app/src/main/java/com/lab04/lab08_idnp/view/UserFormActivity.kt	(date 1639493410759)
+@@ -35,7 +35,8 @@
+                     edtFirstName.text.toString(),
+                     edtLastName.text.toString(),
+                     edtDNI.text.toString(),
+-                    edtAddress.text.toString()
++                    edtAddress.text.toString().toBoolean(),
++                    "Pfizer"
+                 )
+             )
+             val intent = Intent(this, UserListActivity::class.java)
+Index: app/src/main/java/com/lab04/lab08_idnp/service/PatientService.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/lab04/lab08_idnp/service/PatientService.kt b/app/src/main/java/com/lab04/lab08_idnp/service/UserService.kt
+rename from app/src/main/java/com/lab04/lab08_idnp/service/PatientService.kt
+rename to app/src/main/java/com/lab04/lab08_idnp/service/UserService.kt
+--- a/app/src/main/java/com/lab04/lab08_idnp/service/PatientService.kt	(revision 37db748dda28eb2228b4443454cc7847d1f79fd7)
++++ b/app/src/main/java/com/lab04/lab08_idnp/service/UserService.kt	(date 1637084446278)
+@@ -3,7 +3,7 @@
+ import com.lab04.lab08_idnp.model.User
+ 
+ // Service
+-object PatientService {
++object UserService {
+ 
+     // Repository
+     private var users: ArrayList<User?> = arrayListOf()
+Index: app/src/main/java/com/lab04/lab08_idnp/viewmodel/PatientViewModel.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.lab04.lab08_idnp.viewmodel\r\n\r\nimport androidx.lifecycle.LiveData\r\nimport androidx.lifecycle.MutableLiveData\r\nimport androidx.lifecycle.ViewModel\r\nimport com.lab04.lab08_idnp.model.User\r\nimport com.lab04.lab08_idnp.service.PatientService\r\n\r\nclass PatientViewModel : ViewModel() {\r\n    private val patientsLiveData = MutableLiveData<ArrayList<User?>>(arrayListOf())\r\n    private val patientLiveData = MutableLiveData<User?>()\r\n    fun listPatients() {\r\n        patientsLiveData.value = PatientService.list()\r\n    }\r\n\r\n    fun getListPatients(): LiveData<ArrayList<User?>> {\r\n        return patientsLiveData\r\n    }\r\n\r\n    fun getCurrentPatient(): LiveData<User?> {\r\n        return patientLiveData\r\n    }\r\n\r\n    fun fetchPatient(id: Int) {\r\n        patientLiveData.value = PatientService.findById(id)\r\n    }\r\n\r\n    fun savePatient(user: User) {\r\n        patientLiveData.value = PatientService.findById(PatientService.save(user))\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/lab04/lab08_idnp/viewmodel/PatientViewModel.kt b/app/src/main/java/com/lab04/lab08_idnp/viewmodel/PatientViewModel.kt
+--- a/app/src/main/java/com/lab04/lab08_idnp/viewmodel/PatientViewModel.kt	(revision 37db748dda28eb2228b4443454cc7847d1f79fd7)
++++ b/app/src/main/java/com/lab04/lab08_idnp/viewmodel/PatientViewModel.kt	(date 1637084446294)
+@@ -4,13 +4,13 @@
+ import androidx.lifecycle.MutableLiveData
+ import androidx.lifecycle.ViewModel
+ import com.lab04.lab08_idnp.model.User
+-import com.lab04.lab08_idnp.service.PatientService
++import com.lab04.lab08_idnp.service.UserService
+ 
+ class PatientViewModel : ViewModel() {
+     private val patientsLiveData = MutableLiveData<ArrayList<User?>>(arrayListOf())
+     private val patientLiveData = MutableLiveData<User?>()
+     fun listPatients() {
+-        patientsLiveData.value = PatientService.list()
++        patientsLiveData.value = UserService.list()
+     }
+ 
+     fun getListPatients(): LiveData<ArrayList<User?>> {
+@@ -22,10 +22,10 @@
+     }
+ 
+     fun fetchPatient(id: Int) {
+-        patientLiveData.value = PatientService.findById(id)
++        patientLiveData.value = UserService.findById(id)
+     }
+ 
+     fun savePatient(user: User) {
+-        patientLiveData.value = PatientService.findById(PatientService.save(user))
++        patientLiveData.value = UserService.findById(UserService.save(user))
+     }
+ }
+\ No newline at end of file
